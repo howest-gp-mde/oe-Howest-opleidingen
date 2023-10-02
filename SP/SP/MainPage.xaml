@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SP.MainPage">
+    <ScrollView>
+        <StackLayout>
+            <Frame BackgroundColor="#44C8F5" Padding="24" CornerRadius="0">
+                <Label Text="Welkom bij Howest!" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
+            </Frame>
+            <Label Text="Howest wenst alle eerstejaars een fantastische start aan onze hogeschool. Zit jij in het tweede of derde jaar? Uiteraard kijken we er heel erg naar uit om jou terug te zien." FontSize="Title" Padding="30,10,30,10"/>
+            <Button Text="Alle info voor een succesvolle start" x:Name="btnStart" Clicked="BtnStart_Clicked"></Button>
+            <Button x:Name="btnSettings" Style="{StaticResource secondaryButton}" Text="Ga naar de settings" Clicked="BtnSettings_Clicked"></Button>
+        </StackLayout>
+    </ScrollView>
+
+</ContentPage>
