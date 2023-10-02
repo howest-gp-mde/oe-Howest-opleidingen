@@ -17,7 +17,7 @@ namespace SP
 
         private async void BtnStart_Clicked(object sender, EventArgs e)
         {
-            await DisplayAlert("Je hebt op een knop gedrukt", "joepie", "annuleer");
+            await Navigation.PushAsync(new StudyProgrammesPage());
         }
 
         private async void BtnSettings_Clicked(object sender, EventArgs e)

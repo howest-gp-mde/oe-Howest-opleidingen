@@ -2,11 +2,27 @@
 <ResourceDictionary 
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
-    <Style TargetType="Label" x:Key="h1">
+    <Style TargetType="Label" x:Key="baseHeaderStyle">
+        <Setter Property="FontFamily">
+            <Setter.Value>
+                <OnPlatform x:TypeArguments="x:String">
+                    <On Platform="iOS">VAG Rounded Std Bold</On>
+                    <On Platform="Android">Font/VAG-Rounded-Std-Bold.otf#VAG Rounded Std Bold</On>
+                    <On Platform="UWP">/Assets/Font/VAG-Rounded-Std-Bold.otf#VAGRoundedStd-Bold</On>
+                </OnPlatform>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style TargetType="Label" x:Key="h1" BasedOn="{ StaticResource baseHeaderStyle}">
         <Setter Property="FontSize" Value="18"></Setter>
+        <Setter Property="TextColor" Value="{StaticResource dark}"></Setter>
+    </Style>
+    <Style TargetType="Label" x:Key="hero" BasedOn="{StaticResource baseHeaderStyle}">
+        <Setter Property="FontSize" Value="36"></Setter>
+        <Setter Property="FontAttributes" Value="Bold"></Setter>
     </Style>
     <Style TargetType="Button">
-        <Setter Property="Background" Value="#44C8F5"></Setter>
+        <Setter Property="Background" Value="{StaticResource Key=primaryBrush}"></Setter>
         <Setter Property="Padding" Value="20, 9,20,9"></Setter>
         <Setter Property="TextColor" Value="Black"></Setter>
         <Setter Property="FontAttributes" Value="Bold"></Setter>

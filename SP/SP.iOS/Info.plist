@@ -34,5 +34,9 @@
     <string>SP</string>
     <key>XSAppIconAssets</key>
     <string>Assets.xcassets/AppIcon.appiconset</string>
+    <key>UIAppFonts</key>
+    <array>
+        <string>Font/VAG Rounded Std Bold.otf</string>
+    </array>
 </dict>
 </plist>

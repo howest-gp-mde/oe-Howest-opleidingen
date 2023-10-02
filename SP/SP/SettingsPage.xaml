@@ -8,15 +8,15 @@
                 <Image Source="Images/penta.jpg" Aspect="AspectFill" Opacity="0.1" />
                 <StackLayout Padding="10">
                     <Label>Username</Label>
-                    <Entry x:Name="txtUserName" Keyboard="Text"></Entry>
+                    <Entry x:Name="txtUserName" Keyboard="Text" Text="{Binding UserName}"></Entry>
                     <Label>E-mail</Label>
-                    <Entry x:Name="txtEmail" Keyboard="Email"></Entry>
+                    <Entry x:Name="txtEmail" Keyboard="Email" Text="{Binding Email}"></Entry>
                     <StackLayout Orientation="Horizontal" Margin="0,20,0,10">
                         <Label HorizontalOptions="StartAndExpand">Receive weekly stats</Label>
-                        <Switch x:Name="chkReceiveStats" HorizontalOptions="End"></Switch>
+                        <Switch x:Name="chkReceiveStats" HorizontalOptions="End" IsToggled="{Binding ReceiveWeeklyStats}"></Switch>
                     </StackLayout>
-                    <Button Text="Save" 
-               HorizontalOptions="Center"></Button>
+                    <Button x:Name="btnSave" Text="Save" 
+               HorizontalOptions="Center" Clicked="BtnSave_Clicked"></Button>
                 </StackLayout>
             </Grid>
         </ScrollView>

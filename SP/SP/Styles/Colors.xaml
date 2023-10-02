@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ResourceDictionary xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    <!-- Colors -->
+    <Color x:Key="primary">#66C5F2</Color>
+    <Color x:Key="dark">#a0a0a0</Color>
+
+    <!-- Brushes -->
+    <SolidColorBrush Color="{StaticResource primary}" x:Key="primaryBrush"></SolidColorBrush>
+    <Style TargetType="Label" x:Key="h1">
+        <Setter Property="FontSize" Value="8"></Setter>
+        <Setter Property="TextColor" Value="{StaticResource dark}"></Setter>
+    </Style>
+</ResourceDictionary>
