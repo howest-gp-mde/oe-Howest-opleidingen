@@ -18,16 +18,12 @@ namespace SP
         {
             InitializeComponent();
 
-            model.UserName = "Josee de Cauwer";
-            model.Email = "joseeke@gmail.com";
-            model.ReceiveWeeklyStats = true;
-
             this.BindingContext = model;
         }
 
-        private async void BtnSave_Clicked(object sender, EventArgs e)
-        {
-            await DisplayAlert(model.UserName, model.Email, model.ReceiveWeeklyStats.ToString());
-        }
+        //private async void BtnSave_Clicked(object sender, EventArgs e)
+        //{
+        //    await DisplayAlert(model.UserName, model.Email, model.ReceiveWeeklyStats.ToString());
+        //}
     }
 }

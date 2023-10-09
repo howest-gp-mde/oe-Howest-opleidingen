@@ -16,7 +16,11 @@
                         <Switch x:Name="chkReceiveStats" HorizontalOptions="End" IsToggled="{Binding ReceiveWeeklyStats}"></Switch>
                     </StackLayout>
                     <Button x:Name="btnSave" Text="Save" 
-               HorizontalOptions="Center" Clicked="BtnSave_Clicked"></Button>
+                            HorizontalOptions="Center" 
+                            Command="{Binding SaveCommand}"
+                    >
+                            <!--Clicked="BtnSave_Clicked"-->
+                    </Button>
                 </StackLayout>
             </Grid>
         </ScrollView>

@@ -15,17 +15,18 @@ namespace SP
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class StudyProgrammesPage : ContentPage
     {
-        private IStudyProgrammeService _studyProgrammeService;
+        //private IStudyProgrammeService _studyProgrammeService;
         public StudyProgrammesPage()
         {
             InitializeComponent();
-            _studyProgrammeService = new StudyProgrammeService();
+            //_studyProgrammeService = new StudyProgrammeService();
 
-            var model = new StudyProgrammesViewModel();
-            model.StudyProgrammes = _studyProgrammeService.GetAll();
-            model.Title = "Ontdek onze opleidingen";
+            //var model = new StudyProgrammesViewModel();
+            //model.StudyProgrammes = _studyProgrammeService.GetAll();
+            //model.Title = "Ontdek onze opleidingen";
 
-            BindingContext = model;
+            
+            BindingContext = new StudyProgrammesViewModel();
         }
 
         protected override void OnAppearing()

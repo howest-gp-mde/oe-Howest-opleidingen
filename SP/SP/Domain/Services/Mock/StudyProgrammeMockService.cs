@@ -5,7 +5,7 @@ using System.Text;
 
 namespace SP.Services.Mock
 {
-    public class StudyProgrammeService : IStudyProgrammeService
+    public class StudyProgrammeMockService : IStudyProgrammeService
     {
         public List<StudyProgramme> GetAll()
         {
@@ -29,7 +29,7 @@ namespace SP.Services.Mock
                     Type = "Bachelor na bachelor",
                     Title = "Advanced Bachelor of Bioinformatics",
                     WebsiteUrl = "https://www.howest.be/nl/opleidingen/bachelor-na-bachelor/advanced-bachelor-of-bioinformatics",
-                    Location = "Campus Brugge Station",
+                    Location = "Kortrijk",
                     StudyForm = new List<string> { "Dagonderwijs" },
                     Description = "De wereld van de moleculaire biologie ontwikkelt zich razendsnel, in het bijzonder door het toenemende belang van Next Generation Sequencing en big data, naast de traditionele onderzoeksmethoden."
                 },
@@ -51,7 +51,7 @@ namespace SP.Services.Mock
                     Type = "Bachelor",
                     Title = "Bedrijfsmanagement",
                     WebsiteUrl = "https://www.howest.be/nl/opleidingen/bachelor/bedrijfsmanagement",
-                    Location = "Campus Brugge Station",
+                    Location = "Kortrijk",
                     StudyForm = new List<string> { "Dagonderwijs", "Afstandsonderwijs" },
                     Description = "De bachelor Bedrijfsmanagement is de perfecte opleiding om later in de bedrijfswereld aan de slag te gaan. Je wordt meteen ondergedompeld in het werkveld met echte projecten, bedrijfsbezoeken en studiereizen in binnen- en buitenland."
                 },
@@ -73,7 +73,7 @@ namespace SP.Services.Mock
                     Type = "Graduaat",
                     Title = "Bouwkundig Tekenen",
                     WebsiteUrl = "https://www.howest.be/nl/opleidingen/graduaat/bouwkundig-tekenen",
-                    Location = "Campus Brugge Station",
+                    Location = "Kortrijk",
                     StudyForm = new List<string> { "Dagonderwijs", "Avondonderwijs" },
                     Description = "Droom je van het tekenen van bouwplannen? Ben je geïnteresseerd in de technische kant van de bouwsector? Wil je je materialenkennis uitbreiden en je ruimtelijke en bouwkundige inzicht versterken? Dan is de graduaatsopleiding Bouwkundig Tekenen in Brugge of Kortrijk iets voor jou."
                 }
