@@ -16,17 +16,22 @@
         <ScrollView>
             <StackLayout>
                 <Label Style="{StaticResource hero}" Text="{Binding Title}"></Label>
-                <Button Text="Verwijder een opleiding, ze is te saai" Command="{Binding RemoveSPCommand}"></Button>
+                <!--<Button Text="Verwijder een opleiding, ze is te saai" Command="{Binding RemoveSPCommand}"></Button>-->
                 <ListView ItemsSource="{Binding Path=StudyProgrammes}" SelectedItem="{Binding SelectedStudyProgramme}">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
                                 <StackLayout Orientation="Horizontal">
-                                    <Image Source="{Binding Image}"></Image>
+                                    <Image Source="{Binding Image}" HeightRequest="250"></Image>
                                     <StackLayout Orientation="Vertical">
                                         <Label Text="{Binding Title}"></Label>
                                         <Label Text="{Binding Type}"></Label>
-                                        <Image Source="{Binding Path=Location, Converter={StaticResource LocationToIconConverter}}"></Image>
+                                        <CollectionView ItemsSource="{Binding StudyForm}" BindingContext="{Binding Path=.}" HeightRequest="50">
+                                            <CollectionView.ItemsLayout>
+                                                <LinearItemsLayout Orientation="Horizontal"></LinearItemsLayout>
+                                            </CollectionView.ItemsLayout>
+                                        </CollectionView>
+                                        <Image Source="{Binding Path=Location, Converter={StaticResource LocationToIconConverter}}" HeightRequest="50"></Image>
                                     </StackLayout>
                                 </StackLayout>
                             </ViewCell>

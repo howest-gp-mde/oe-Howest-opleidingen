@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SP.StudyProgrammeDetailPage">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+                <Image Source="{Binding Image}"></Image>
+                <Label Text="{Binding Title}" Style="{StaticResource h1}"></Label>
+                <Label Text="{Binding Description}"></Label>
+                <Button Style="{StaticResource secondaryButton}" Text="Ga terug" Command="{Binding GoBackCommand}"></Button>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

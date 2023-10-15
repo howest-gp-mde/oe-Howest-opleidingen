@@ -37,8 +37,11 @@ namespace SP.ViewModel
             {
                 selectedStudyProgramme = value;
                 RaisePropertyChanged(nameof(StudyProgramme));
+                OnItemSelected(value);
             }
         }
+
+
 
         private ObservableCollection<StudyProgramme> studyProgrammes;
 
@@ -52,19 +55,7 @@ namespace SP.ViewModel
             }
         }
 
-        public ICommand RemoveSPCommand
-        {
-            get
-            {
-                return new Command(async () => 
-                {
-                    if(SelectedStudyProgramme != null)
-                    {
-                        await App.Current.MainPage.Navigation.PushAsync(new SettingsPage());
-                    }
-                });
-            }
-        }
+        
 
 
         public StudyProgrammesViewModel()
@@ -72,6 +63,15 @@ namespace SP.ViewModel
             _studyProgrammeService = new StudyProgrammeMockService();
             this.Title = "Ontdek onze opleidingen";
             this.studyProgrammes = new ObservableCollection<StudyProgramme>(_studyProgrammeService.GetAll());
+        }
+
+        private async void OnItemSelected(StudyProgramme item)
+        {
+            if (item == null)
+                return;
+
+            // This will push the ItemDetailPage onto the navigation stack
+            await App.Current.MainPage.Navigation.PushAsync(new StudyProgrammeDetailPage(SelectedStudyProgramme));
         }
     }
 }

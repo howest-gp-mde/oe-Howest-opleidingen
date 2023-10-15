@@ -19,7 +19,7 @@ namespace SP.Services.Mock
                     Title = "Accounting Administration",
                     WebsiteUrl = "https://www.howest.be/nl/opleidingen/graduaat/accounting-administration",
                     Location = "Campus Brugge Station",
-                    StudyForm = new List<string> { "Dagonderwijs" },
+                    StudyForm = new List<string> { "Dagonderwijs", "Avondonderwijs", "Afstandsonderwijs" },
                     Description = "Wil je kantoren en bedrijven later een staaltje accounting magic laten zien? Heb je oog voor detail, oor voor klantvragen en stalen zenuwen als het op deadlines aankomt? Ben je nauwkeurig en kijk je graag naar de cijfers na de komma?"
                 },
                 new StudyProgramme
