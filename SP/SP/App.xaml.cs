@@ -1,4 +1,6 @@
-﻿using System;
+﻿using FreshMvvm;
+using SP.ViewModels;
+using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -10,7 +12,11 @@ namespace SP
         {
             InitializeComponent();
 
-            MainPage = new NavigationPage(new MainPage());
+            // old style
+            // MainPage = new NavigationPage(new MainPage());
+
+            // change to FreshMVVM
+            MainPage = new FreshNavigationContainer(FreshPageModelResolver.ResolvePageModel<MainViewModel>());
         }
 
         protected override void OnStart()

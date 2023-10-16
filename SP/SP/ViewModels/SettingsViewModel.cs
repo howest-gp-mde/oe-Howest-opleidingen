@@ -1,4 +1,5 @@
-﻿using SP.ViewModels;
+﻿using FreshMvvm;
+using SP.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -6,9 +7,9 @@ using System.Text;
 using System.Windows.Input;
 using Xamarin.Forms;
 
-namespace SP.ViewModel
+namespace SP.ViewModels
 {
-    public class SettingsViewModel : BaseViewModel
+    public class SettingsViewModel : FreshBasePageModel
     {
         private string userName;
         public string UserName

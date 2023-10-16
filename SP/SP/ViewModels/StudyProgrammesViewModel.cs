@@ -1,4 +1,6 @@
-﻿using SP.Domain.Models;
+﻿using FreshMvvm;
+using SP.Domain.Models;
+using SP.Pages;
 using SP.Services;
 using SP.Services.Mock;
 using SP.ViewModels;
@@ -10,9 +12,9 @@ using System.Text;
 using System.Windows.Input;
 using Xamarin.Forms;
 
-namespace SP.ViewModel
+namespace SP.ViewModels
 {
-    public class StudyProgrammesViewModel : BaseViewModel
+    public class StudyProgrammesViewModel : FreshBasePageModel
     {
         private IStudyProgrammeService _studyProgrammeService;
 
@@ -71,7 +73,9 @@ namespace SP.ViewModel
                 return;
 
             // This will push the ItemDetailPage onto the navigation stack
-            await App.Current.MainPage.Navigation.PushAsync(new StudyProgrammeDetailPage(SelectedStudyProgramme));
+            // await App.Current.MainPage.Navigation.PushAsync(new StudyProgrammeDetailPage(SelectedStudyProgramme));
+
+            await CoreMethods.PushPageModel<StudyProgrammeDetailViewModel>(SelectedStudyProgramme);
         }
     }
 }

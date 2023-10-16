@@ -9,16 +9,16 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace SP
+namespace SP.Pages
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class StudyProgrammeDetailPage : ContentPage
 	{
-		public StudyProgrammeDetailPage (StudyProgramme programme)
+		public StudyProgrammeDetailPage (/**StudyProgramme programme**/)
 		{
 			InitializeComponent ();
 
-			this.BindingContext = new StudyProgrammeDetailViewModel(programme);
+			// this.BindingContext = new StudyProgrammeDetailViewModel(programme);
 		}
 	}
 }

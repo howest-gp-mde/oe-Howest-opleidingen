@@ -1,4 +1,5 @@
-﻿using SP.Domain.Models;
+﻿using FreshMvvm;
+using SP.Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,7 +9,7 @@ using Xamarin.Forms;
 
 namespace SP.ViewModels
 {
-    public  class StudyProgrammeDetailViewModel: BaseViewModel
+    public  class StudyProgrammeDetailViewModel: FreshBasePageModel
     {
         private string title;
 
@@ -44,16 +45,29 @@ namespace SP.ViewModels
             {
                 return new Command(async () =>
                 {
-                    await App.Current.MainPage.Navigation.PopAsync();
+                    // await App.Current.MainPage.Navigation.PopAsync();
+                    await CoreMethods.PopPageModel();
                 });
             }
         }
 
-        public StudyProgrammeDetailViewModel(StudyProgramme selectedStudyProgramme)
+        public StudyProgrammeDetailViewModel()
         {
+            
+        }
+
+        public override void Init(object initData)
+        {
+            var selectedStudyProgramme = initData as StudyProgramme;
+
             this.Title = selectedStudyProgramme.Title;
             this.Image = selectedStudyProgramme.Image;
             this.Description = selectedStudyProgramme.Description;
+        }
+
+        public override void ReverseInit(object returnedData)
+        {
+            base.ReverseInit(returnedData);
         }
 
     }
