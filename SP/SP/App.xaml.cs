@@ -1,4 +1,6 @@
 ﻿using FreshMvvm;
+using SP.Services;
+using SP.Services.Mock;
 using SP.ViewModels;
 using System;
 using Xamarin.Forms;
@@ -14,6 +16,9 @@ namespace SP
 
             // old style
             // MainPage = new NavigationPage(new MainPage());
+
+            // dependencies
+            FreshIOC.Container.Register<IStudyProgrammeService, StudyProgrammeMockService>();
 
             // change to FreshMVVM
             MainPage = new FreshNavigationContainer(FreshPageModelResolver.ResolvePageModel<MainViewModel>());

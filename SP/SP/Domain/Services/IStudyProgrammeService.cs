@@ -1,10 +1,11 @@
 ﻿using SP.Domain.Models;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace SP.Services
 {
     public interface IStudyProgrammeService
     {
-        List<StudyProgramme> GetAll();
+        Task<List<StudyProgramme>> GetAll();
     }
 }

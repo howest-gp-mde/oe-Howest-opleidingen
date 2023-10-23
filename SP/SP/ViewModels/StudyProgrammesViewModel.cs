@@ -5,6 +5,7 @@ using SP.Services;
 using SP.Services.Mock;
 using SP.ViewModels;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -57,15 +58,42 @@ namespace SP.ViewModels
             }
         }
 
-        
+        private bool isBusy;
 
-
-        public StudyProgrammesViewModel()
+        public bool IsBusy
         {
-            _studyProgrammeService = new StudyProgrammeMockService();
-            this.Title = "Ontdek onze opleidingen";
-            this.studyProgrammes = new ObservableCollection<StudyProgramme>(_studyProgrammeService.GetAll());
+            get { return isBusy; }
+            set { 
+                isBusy = value;
+                RaisePropertyChanged(nameof(IsBusy));
+            }
         }
+
+
+
+        public StudyProgrammesViewModel(IStudyProgrammeService service)
+        {
+            _studyProgrammeService = service;
+       
+        }
+
+        public override async void Init(object initData)
+        {
+            IsBusy = true;
+            var programmes = await _studyProgrammeService.GetAll();
+            IsBusy = false;
+            this.StudyProgrammes = new ObservableCollection<StudyProgramme>(programmes);
+            this.Title = "Ontdek onze opleidingen";
+        }
+
+
+        public override void ReverseInit(object value)
+        {
+            base.ReverseInit(value);
+        }
+
+
+    
 
         private async void OnItemSelected(StudyProgramme item)
         {
@@ -75,7 +103,7 @@ namespace SP.ViewModels
             // This will push the ItemDetailPage onto the navigation stack
             // await App.Current.MainPage.Navigation.PushAsync(new StudyProgrammeDetailPage(SelectedStudyProgramme));
 
-            await CoreMethods.PushPageModel<StudyProgrammeDetailViewModel>(SelectedStudyProgramme);
+            await CoreMethods.PushPageModel<StudyProgrammeDetailViewModel>(SelectedStudyProgramme, true, true);
         }
     }
 }

@@ -1,45 +1,47 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:local="clr-namespace:SP.ViewModel"
+             xmlns:local="clr-namespace:SP.ViewModels"
              xmlns:converters="clr-namespace:SP.Converters"
+             xmlns:views="clr-namespace:SP.Views"
              x:Class="SP.Pages.StudyProgrammesPage">
-    <!--<ContentPage.BindingContext>
-        <local:StudyProgrammesViewModel></local:StudyProgrammesViewModel>
-    </ContentPage.BindingContext>-->
     <ContentPage.Resources>
         <ResourceDictionary>
             <converters:LocationToIconConverter x:Key="LocationToIconConverter"/>
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <ScrollView>
-            <StackLayout>
-                <Label Style="{StaticResource hero}" Text="{Binding Title}"></Label>
-                <!--<Button Text="Verwijder een opleiding, ze is te saai" Command="{Binding RemoveSPCommand}"></Button>-->
-                <ListView ItemsSource="{Binding Path=StudyProgrammes}" SelectedItem="{Binding SelectedStudyProgramme}">
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <ViewCell>
-                                <StackLayout Orientation="Horizontal">
-                                    <Image Source="{Binding Image}" HeightRequest="250"></Image>
-                                    <StackLayout Orientation="Vertical">
-                                        <Label Text="{Binding Title}"></Label>
-                                        <Label Text="{Binding Type}"></Label>
-                                        <CollectionView ItemsSource="{Binding StudyForm}" BindingContext="{Binding Path=.}" HeightRequest="50">
-                                            <CollectionView.ItemsLayout>
-                                                <LinearItemsLayout Orientation="Horizontal"></LinearItemsLayout>
-                                            </CollectionView.ItemsLayout>
-                                        </CollectionView>
-                                        <Image Source="{Binding Path=Location, Converter={StaticResource LocationToIconConverter}}" HeightRequest="50"></Image>
+        <AbsoluteLayout>
+            <ScrollView AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1">
+                <StackLayout>
+                    <Label Style="{StaticResource hero}" Text="{Binding Title}"></Label>
+                    <!--<Button Text="Verwijder een opleiding, ze is te saai" Command="{Binding RemoveSPCommand}"></Button>-->
+                    <ListView ItemsSource="{Binding Path=StudyProgrammes}" SelectedItem="{Binding SelectedStudyProgramme}">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <StackLayout Orientation="Horizontal">
+                                        <Image Source="{Binding Image}" HeightRequest="250"></Image>
+                                        <StackLayout Orientation="Vertical">
+                                            <Label Text="{Binding Title}"></Label>
+                                            <Label Text="{Binding Type}"></Label>
+                                            <CollectionView ItemsSource="{Binding StudyForm}" BindingContext="{Binding Path=.}" HeightRequest="50">
+                                                <CollectionView.ItemsLayout>
+                                                    <LinearItemsLayout Orientation="Horizontal"></LinearItemsLayout>
+                                                </CollectionView.ItemsLayout>
+                                            </CollectionView>
+                                            <Image Source="{Binding Path=Location, Converter={StaticResource LocationToIconConverter}}" HeightRequest="50"></Image>
+                                        </StackLayout>
                                     </StackLayout>
-                                </StackLayout>
-                            </ViewCell>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
-            </StackLayout>
-           
-        </ScrollView>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackLayout>
+
+            </ScrollView>
+            <views:BusyView IsVisible="{Binding IsBusy}" AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All"> </views:BusyView>
+        </AbsoluteLayout>
+     
     </ContentPage.Content>
 </ContentPage>

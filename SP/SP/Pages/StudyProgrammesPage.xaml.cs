@@ -26,7 +26,7 @@ namespace SP.Pages
             //model.Title = "Ontdek onze opleidingen";
 
             
-            BindingContext = new StudyProgrammesViewModel();
+            // BindingContext = new StudyProgrammesViewModel();
         }
 
         protected override void OnAppearing()

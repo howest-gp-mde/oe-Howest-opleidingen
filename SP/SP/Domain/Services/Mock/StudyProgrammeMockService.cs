@@ -2,14 +2,16 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace SP.Services.Mock
 {
     public class StudyProgrammeMockService : IStudyProgrammeService
     {
-        public List<StudyProgramme> GetAll()
+        public async Task<List<StudyProgramme>> GetAll()
         {
-            return new List<StudyProgramme>
+            await Task.Delay(2000);
+            return await Task.FromResult(new List<StudyProgramme>
             {
                 new StudyProgramme
                 {
@@ -77,7 +79,7 @@ namespace SP.Services.Mock
                     StudyForm = new List<string> { "Dagonderwijs", "Avondonderwijs" },
                     Description = "Droom je van het tekenen van bouwplannen? Ben je geïnteresseerd in de technische kant van de bouwsector? Wil je je materialenkennis uitbreiden en je ruimtelijke en bouwkundige inzicht versterken? Dan is de graduaatsopleiding Bouwkundig Tekenen in Brugge of Kortrijk iets voor jou."
                 }
-            };
+            });
         }
     }
 }
