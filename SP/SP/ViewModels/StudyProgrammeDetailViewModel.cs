@@ -46,7 +46,7 @@ namespace SP.ViewModels
                 return new Command(async () =>
                 {
                     // await App.Current.MainPage.Navigation.PopAsync();
-                    await CoreMethods.PopPageModel(null, true, true);
+                    await CoreMethods.PopPageModel("", true, true);
                 });
             }
         }
