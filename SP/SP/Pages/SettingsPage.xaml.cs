@@ -16,8 +16,7 @@ namespace SP.Pages
         SettingsViewModel model = new SettingsViewModel();
         public SettingsPage()
         {
-            InitializeComponent();
-
+            InitializeComponent();  
             this.BindingContext = model;
         }
 
