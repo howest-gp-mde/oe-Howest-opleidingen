@@ -20,5 +20,10 @@ namespace SP.Pages
 
 			// this.BindingContext = new StudyProgrammeDetailViewModel(programme);
 		}
-	}
+
+        private void Button_Clicked(object sender, EventArgs e)
+        {
+			pdf.IsVisible = true;
+        }
+    }
 }

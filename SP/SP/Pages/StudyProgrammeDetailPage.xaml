@@ -1,7 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="SP.Pages.StudyProgrammeDetailPage">
+             x:Class="SP.Pages.StudyProgrammeDetailPage"
+             xmlns:syncfusion="clr-namespace:Syncfusion.SfPdfViewer.XForms;assembly=Syncfusion.SfPdfViewer.XForms">
     <ContentPage.Content>
         <ScrollView>
             <StackLayout>
@@ -9,6 +10,12 @@
                 <Label Text="{Binding Title}" Style="{StaticResource h1}"></Label>
                 <Label Text="{Binding Description}"></Label>
                 <Button Style="{StaticResource secondaryButton}" Text="Ga terug" Command="{Binding GoBackCommand}"></Button>
+                
+                <Button Style="{StaticResource secondaryButton}" Text="Toon Pdf" Command="{Binding ShowPdfCommand}" Clicked="Button_Clicked"></Button>
+
+                <Grid HeightRequest="1000" BackgroundColor="Yellow" x:Name="pdf" IsVisible="False">
+                    <syncfusion:SfPdfViewer  InputFileStream="{Binding PdfDocumentStream}"  HeightRequest="1000"/>
+                </Grid>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

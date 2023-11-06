@@ -71,6 +71,7 @@
     <BundleResource Include="Resources\Font\VAG Rounded Std Bold.otf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </BundleResource>
+    <BundleResource Include="Resources\Files\WEGWIJZER STUDENT2223_PROG_Avond.pdf" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />

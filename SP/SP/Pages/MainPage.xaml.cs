@@ -18,7 +18,6 @@ namespace SP.Pages
         //private async void BtnStart_Clicked(object sender, EventArgs e)
         //{
         //    await Navigation.PushAsync(new StudyProgrammesPage());
-
         //}
 
         //private async void BtnSettings_Clicked(object sender, EventArgs e)

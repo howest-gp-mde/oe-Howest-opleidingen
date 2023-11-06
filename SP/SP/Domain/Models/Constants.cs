@@ -8,5 +8,6 @@ namespace SP.Domain.Models
     public static class Constants
     {
         public static string NumberOfPetsError = "Je moet hondern hebben";
+        public static readonly string SettingsFile = "settings.txt";
     }
 }

@@ -1,10 +1,13 @@
 ﻿using FreshMvvm;
+using SP.Domain.Models;
 using SP.Domain.Validators;
 using SP.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.IO;
 using System.Text;
+using System.Text.Json;
 using System.Windows.Input;
 using Xamarin.Forms;
 
@@ -64,14 +67,56 @@ namespace SP.ViewModels
             }
         }
 
+        public SettingsViewModel()
+        {
+            string folder = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+            string fullPath = Path.Combine(folder, Domain.Models.Constants.SettingsFile);
+            if (File.Exists(fullPath))
+            {
+                string output = File.ReadAllText(fullPath);
+                var settings = JsonSerializer.Deserialize<Settings>(output);
+                Email = settings.Email;
+                NumberOfCertificates = settings.NumberOfCertificates;
+                ReceiveWeeklyStats = settings.ReceiveWeeklyStats;
+                UserName = settings.UserName;
+            }
+        }
+
+        public override void Init(object initData)
+        {
+            string folder = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+            string fullPath = Path.Combine(folder, Domain.Models.Constants.SettingsFile);
+            if (File.Exists(fullPath))
+            {
+                string output = File.ReadAllText(fullPath);
+                var settings = JsonSerializer.Deserialize<Settings>(output);
+                Email = settings.Email;
+                NumberOfCertificates = settings.NumberOfCertificates;
+                ReceiveWeeklyStats = settings.ReceiveWeeklyStats;
+                UserName = settings.UserName;
+            }
+        }
+
         public ICommand SaveCommand
         {
             get
             {
                 return new Command(async () =>
                 {
-                    if (Validate())
+                    var settings = new Settings
                     {
+                        Email = Email,
+                        NumberOfCertificates = NumberOfCertificates,
+                        ReceiveWeeklyStats = ReceiveWeeklyStats,
+                        UserName = UserName
+                    };
+
+                    if (Validate(settings))
+                    {
+                        string folder = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+                        string fullPath = Path.Combine(folder, Domain.Models.Constants.SettingsFile);
+
+                        File.WriteAllText(fullPath, JsonSerializer.Serialize(settings));
                         await App.Current.MainPage.DisplayAlert("Het is gelukt", $"{UserName}, {Email}", "Annuleer");
                     }
                 });
@@ -89,24 +134,19 @@ namespace SP.ViewModels
         }
 
 
-        private bool Validate()
+        private bool Validate(Settings settings)
         {
             var validator = new SettingsValidator();
 
-            var result = validator.Validate(new Domain.Models.Settings
-            {
-                Email = Email,
-                NumberOfCertificates = NumberOfCertificates,
-                ReceiveWeeklyStats = ReceiveWeeklyStats, 
-                UserName = UserName
-            });
+            var result = validator.Validate(settings);
 
-            foreach(var error in result.Errors) {
+            foreach (var error in result.Errors)
+            {
                 if (error.PropertyName == nameof(NumberOfCertificates))
                 {
                     NumberOfCertificatesError = error.ErrorMessage;
                 }
-            
+
             }
 
             //NumberOfCertificatesError = "";

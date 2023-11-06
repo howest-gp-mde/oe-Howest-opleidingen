@@ -28,7 +28,8 @@ namespace SP.ViewModels
             {
                 return new Command(async () =>
                 {
-                    await App.Current.MainPage.Navigation.PushAsync(new SettingsPage());
+                    // await App.Current.MainPage.Navigation.PushAsync(new SettingsPage());
+                    await CoreMethods.PushPageModel<SettingsViewModel>(true);
                 });
             }
         }
