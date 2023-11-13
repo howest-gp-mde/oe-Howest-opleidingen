@@ -14,11 +14,11 @@ namespace SP.Tests.ViewModels
         public async void Init_Normal_StudyProgrammesNotEmptyAsync()
         {
             // Arrange
-            //var service = new StudyProgrammeMockService();
-            //var model = new StudyProgrammesViewModel(service);
+            var service = new StudyProgrammeMockService();
+            var model = new StudyProgrammesViewModel(service);
 
             // Act
-            //await model.Init(null);
+            await Task.Run(() => model.Init(null));
 
             // Assert
             //Assert.NotEmpty(model.StudyProgrammes);
