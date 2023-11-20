@@ -16,13 +16,16 @@ namespace SP.Tests.ViewModels
             // Arrange
             var service = new StudyProgrammeMockService();
             var model = new StudyProgrammesViewModel(service);
+            
 
             // Act
-            await Task.Run(() => model.Init(null));
+            model.Init(null);
 
+            await Task.Delay(3000);
             // Assert
-            //Assert.NotEmpty(model.StudyProgrammes);
-            Assert.True(true);
+            Assert.NotNull(model.StudyProgrammes);
+            Assert.NotEmpty(model.StudyProgrammes);
+            
         }
     }
 }

@@ -9,8 +9,10 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.IO;
 using System.Text;
 using System.Windows.Input;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace SP.ViewModels
@@ -63,7 +65,8 @@ namespace SP.ViewModels
         public bool IsBusy
         {
             get { return isBusy; }
-            set { 
+            set
+            {
                 isBusy = value;
                 RaisePropertyChanged(nameof(IsBusy));
             }
@@ -74,16 +77,28 @@ namespace SP.ViewModels
         public StudyProgrammesViewModel(IStudyProgrammeService service)
         {
             _studyProgrammeService = service;
-       
+
         }
 
-        public override async void Init(object initData)
+        public override void Init(object initData)
         {
-            IsBusy = true;
-            var programmes = await _studyProgrammeService.GetAll();
-            IsBusy = false;
-            this.StudyProgrammes = new ObservableCollection<StudyProgramme>(programmes);
+
             this.Title = "Ontdek onze opleidingen";
+            this.LoadData.Execute(null);
+        }
+
+        public ICommand LoadData
+        {
+            get
+            {
+                return new Command(async () =>
+                {
+                    IsBusy = true;
+                    var programmes = await _studyProgrammeService.GetAll();
+                    IsBusy = false;
+                    this.StudyProgrammes = new ObservableCollection<StudyProgramme>(programmes);
+                });
+            }
         }
 
 
@@ -93,7 +108,7 @@ namespace SP.ViewModels
         }
 
 
-    
+
 
         private async void OnItemSelected(StudyProgramme item)
         {
