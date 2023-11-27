@@ -8,6 +8,11 @@ namespace SP.Services.Mock
 {
     public class StudyProgrammeMockService : IStudyProgrammeService
     {
+
+        public async Task AddStudyProgramme(StudyProgramme studyProgramme)
+        {
+
+        }
         public async Task<List<StudyProgramme>> GetAll()
         {
             await Task.Delay(2000);
