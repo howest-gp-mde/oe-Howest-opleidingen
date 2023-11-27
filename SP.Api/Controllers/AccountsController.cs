@@ -1,0 +1,42 @@
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
+using SP.Api.DTO;
+using SP.Api.Entities;
+using System.Security.Claims;
+
+namespace SP.Api.Controllers
+{
+    [Route("api/[controller]")]
+    [ApiController]
+    public class AccountsController : ControllerBase
+    {
+        private readonly UserManager<ApplicationUser> _userManager; private readonly SignInManager<ApplicationUser> _signInManager; private readonly IConfiguration _configuration; public AccountsController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, IConfiguration configuration) { _userManager = userManager; _signInManager = signInManager; _configuration = configuration; }
+        [AllowAnonymous]
+        [HttpPost("register")]
+        public async Task<IActionResult> Register([FromBody] RegisterUserRequestDTO registration)
+        {
+            if (!ModelState.IsValid) { return BadRequest(ModelState); }
+            ApplicationUser newUser = new ApplicationUser
+            {
+                Email = registration.Email,
+                UserName = registration.Email
+            };
+            IdentityResult result = await _userManager.CreateAsync(newUser, registration.Password);
+
+            if (!result.Succeeded)
+            {
+                foreach (var error in result.Errors)
+                {
+                    ModelState.AddModelError(error.Code, error.Description);
+                }
+                return BadRequest(ModelState);
+            }
+            newUser = await _userManager.FindByEmailAsync(registration.Email);
+            await _userManager.AddClaimAsync(newUser, new Claim("registration-date", DateTime.UtcNow.ToString("yy-MM-dd")));
+            await _userManager.AddClaimAsync(newUser, new Claim("city", registration.City));
+            
+            return Ok();
+        }
+    }
+}
