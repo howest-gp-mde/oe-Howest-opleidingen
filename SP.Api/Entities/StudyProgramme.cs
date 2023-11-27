@@ -8,7 +8,6 @@
         public string Title { get; set; }
         public string WebsiteUrl { get; set; }
         public string Location { get; set; }
-        public List<string> StudyForm { get; set; }
         public string Description { get; set; }
     }
 }
