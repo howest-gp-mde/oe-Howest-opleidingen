@@ -24,7 +24,6 @@ namespace SP.Api.Controllers
         }
 
         [HttpGet]
-        [Route("{id}")]
         public IActionResult Get()
         {
             var user = GetUser();
@@ -40,7 +39,6 @@ namespace SP.Api.Controllers
 
 
         [HttpPut]
-        [Route("{id}")]
         public async Task<IActionResult> PutAsync(UpdateProfileRequestDTO model)
         {
             var user = GetUser();
