@@ -5,9 +5,10 @@ using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 
 namespace SP.Domain.Models
 {
-    public static class Constants
+    public  class Constants
     {
-        public static string NumberOfPetsError = "Je moet hondern hebben";
-        public static readonly string SettingsFile = "settings.txt";
+        public const string NumberOfPetsError = "Je moet hondern hebben";
+        public const string SettingsFile = "settings.txt";
+        public const string ApiBaseUrl = "https://enter-your-api-tunnel-url/";
     }
 }

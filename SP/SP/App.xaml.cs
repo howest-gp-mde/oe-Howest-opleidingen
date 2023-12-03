@@ -1,4 +1,5 @@
 ﻿using FreshMvvm;
+using SP.Domain.Services.Api;
 using SP.Domain.Services.File;
 using SP.Services;
 using SP.Services.Mock;
@@ -19,7 +20,8 @@ namespace SP
             // MainPage = new NavigationPage(new MainPage());
 
             // dependencies
-            FreshIOC.Container.Register<IStudyProgrammeService, StudyProgrammeFileService>();
+            FreshIOC.Container.Register<IStudyProgrammeService, StudyProgrammeApiService>();
+            FreshIOC.Container.Register<IApiClient, CustomHttpClient>().AsSingleton();
 
             // change to FreshMVVM
             MainPage = new FreshNavigationContainer(FreshPageModelResolver.ResolvePageModel<MainViewModel>());

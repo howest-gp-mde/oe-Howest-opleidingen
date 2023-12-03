@@ -4,7 +4,7 @@ using SP.Api.Data;
 namespace SP.Api.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class StudyProgrammesController : ControllerBase
     {
         SPContext _context;

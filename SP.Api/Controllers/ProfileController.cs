@@ -61,6 +61,10 @@ namespace SP.Api.Controllers
                         UserName = user.UserName
                     });
                 }
+                catch(Exception ex)
+                {
+                    return BadRequest(ex.Message);
+                }
             }
 
             // TODO: map errors in response
