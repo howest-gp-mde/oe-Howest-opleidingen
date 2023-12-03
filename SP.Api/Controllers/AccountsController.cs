@@ -14,7 +14,13 @@ namespace SP.Api.Controllers
     [ApiController]
     public class AccountsController : ControllerBase
     {
-        private readonly UserManager<ApplicationUser> _userManager; private readonly SignInManager<ApplicationUser> _signInManager; private readonly IConfiguration _configuration; public AccountsController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, IConfiguration configuration) { _userManager = userManager; _signInManager = signInManager; _configuration = configuration; }
+        private readonly UserManager<ApplicationUser> _userManager;
+        private readonly SignInManager<ApplicationUser> _signInManager;
+        private readonly IConfiguration _configuration;
+        public AccountsController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, IConfiguration configuration)
+        {
+            _userManager = userManager; _signInManager = signInManager; _configuration = configuration;
+        }
         [AllowAnonymous]
         [HttpPost("register")]
         public async Task<IActionResult> Register([FromBody] RegisterUserRequestDTO registration)
@@ -74,7 +80,7 @@ namespace SP.Api.Controllers
             var token = new JwtSecurityToken(issuer: _configuration.GetValue<string>("JWTConfiguration:Issuer"),
                 audience: _configuration.GetValue<string>("JWTConfiguration:Audience"),
                 claims: claims,
-                expires: DateTime.UtcNow.Add(TimeSpan.FromDays(expirationDays)), notBefore: DateTime.UtcNow, signingCredentials: new SigningCredentials(new SymmetricSecurityKey(siginingKey), SecurityAlgorithms.HmacSha256)); 
+                expires: DateTime.UtcNow.Add(TimeSpan.FromDays(expirationDays)), notBefore: DateTime.UtcNow, signingCredentials: new SigningCredentials(new SymmetricSecurityKey(siginingKey), SecurityAlgorithms.HmacSha256));
             return token;
         }
     }
