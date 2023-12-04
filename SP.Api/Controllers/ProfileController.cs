@@ -39,7 +39,7 @@ namespace SP.Api.Controllers
 
 
         [HttpPut]
-        public async Task<IActionResult> PutAsync(UpdateProfileRequestDTO model)
+        public async Task<IActionResult> PutAsync([FromBody] UpdateProfileRequestDTO model)
         {
             var user = GetUser();
 

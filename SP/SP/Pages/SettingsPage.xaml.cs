@@ -13,11 +13,11 @@ namespace SP.Pages
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class SettingsPage : ContentPage
     {
-        SettingsViewModel model = new SettingsViewModel();
+        //SettingsViewModel model = new SettingsViewModel();
         public SettingsPage()
         {
             InitializeComponent();  
-            this.BindingContext = model;
+            //this.BindingContext = model;
         }
 
         //private async void BtnSave_Clicked(object sender, EventArgs e)

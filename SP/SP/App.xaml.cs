@@ -19,6 +19,8 @@ namespace SP
             // old style
             // MainPage = new NavigationPage(new MainPage());
 
+            FreshIOC.Container.Register(DependencyService.Get<IPushService>());
+
             // dependencies
             FreshIOC.Container.Register<IStudyProgrammeService, StudyProgrammeApiService>();
             FreshIOC.Container.Register<IApiClient, CustomHttpClient>().AsSingleton();

@@ -30,7 +30,11 @@
                             HorizontalOptions="Center" 
                             Command="{Binding SaveCommand}"
                     >
-                            <!--Clicked="BtnSave_Clicked"-->
+                    </Button>
+                    <Button Text="Show Notification" 
+                            HorizontalOptions="Center" 
+                            Command="{Binding ShowNotificationCommand}"
+                    >
                     </Button>
                 </StackLayout>
             </Grid>

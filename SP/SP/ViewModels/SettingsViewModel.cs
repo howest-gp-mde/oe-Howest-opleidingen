@@ -1,6 +1,7 @@
 ﻿using FreshMvvm;
 using SP.Domain.Models;
 using SP.Domain.Validators;
+using SP.Services;
 using SP.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -15,6 +16,8 @@ namespace SP.ViewModels
 {
     public class SettingsViewModel : FreshBasePageModel
     {
+        IPushService _pushService;
+
         private string userName;
         public string UserName
         {
@@ -67,8 +70,12 @@ namespace SP.ViewModels
             }
         }
 
-        public SettingsViewModel()
+        
+        public SettingsViewModel(IPushService pushService)
         {
+            _pushService = pushService; 
+
+
             string folder = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
             string fullPath = Path.Combine(folder, Domain.Models.Constants.SettingsFile);
             if (File.Exists(fullPath))
@@ -94,6 +101,17 @@ namespace SP.ViewModels
                 NumberOfCertificates = settings.NumberOfCertificates;
                 ReceiveWeeklyStats = settings.ReceiveWeeklyStats;
                 UserName = settings.UserName;
+            }
+        }
+
+        public ICommand ShowNotificationCommand
+        {
+            get
+            {
+                return new Command(() =>
+                {
+                    _pushService.SendNotification("Boe !");
+                });
             }
         }
 
