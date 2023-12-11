@@ -80,11 +80,19 @@ namespace SP.ViewModels
 
         }
 
-        public override void Init(object initData)
+        public async override void Init(object initData)
         {
 
             this.Title = "Ontdek onze opleidingen";
-            this.LoadData.Execute(null);
+            if(!String.IsNullOrEmpty(await SecureStorage.GetAsync("token")) )
+            {
+
+                this.LoadData.Execute(null);
+            }
+            else
+            {
+                await CoreMethods.PushPageModel<LoginViewModel>();
+            }
         }
 
         public ICommand LoadData

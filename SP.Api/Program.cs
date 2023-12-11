@@ -9,13 +9,13 @@ using System.Text;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddDbContext<SPContext>(options => 
+builder.Services.AddDbContext<SPContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 // Identity configuration
 builder.Services.AddIdentity<ApplicationUser, IdentityRole>(
-    options => 
-        { options.SignIn.RequireConfirmedEmail = false; }) 
+    options =>
+        { options.SignIn.RequireConfirmedEmail = false; })
     .AddEntityFrameworkStores<SPContext>();
 
 builder.Services.AddAuthentication(
@@ -26,8 +26,19 @@ builder.Services.AddAuthentication(
     })
     .AddJwtBearer(jwtOptions =>
     {
-        jwtOptions.TokenValidationParameters = new TokenValidationParameters() { ValidateActor = true, ValidateAudience = true, ValidateLifetime = true, ValidIssuer = builder.Configuration["JWTConfiguration:Issuer"], ValidAudience = builder.Configuration["JWTConfiguration:Audience"], IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["JWTConfiguration:SigningKey"])) };
+        jwtOptions.TokenValidationParameters = new TokenValidationParameters()
+        {
+            ValidateActor = true,
+            ValidateAudience = true,
+            ValidateLifetime = true,
+            ValidIssuer = builder.Configuration["JWTConfiguration:Issuer"],
+            ValidAudience = builder.Configuration["JWTConfiguration:Audience"],
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["JWTConfiguration:SigningKey"])),
+        };
+        
     });
+
+//builder.Services.AddIdentityServer(s => s.);
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -50,6 +61,7 @@ app.UseHttpsRedirection();
 
 app.UseAuthentication();
 app.UseAuthorization();
+//app.UseIdentity();
 
 app.MapControllers();
 

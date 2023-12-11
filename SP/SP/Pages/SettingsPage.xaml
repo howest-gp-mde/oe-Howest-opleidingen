@@ -35,7 +35,8 @@
                             HorizontalOptions="Center" 
                             Command="{Binding ShowNotificationCommand}"
                     >
-                    </Button>
+                    </Button>   
+                   
                 </StackLayout>
             </Grid>
         </ScrollView>

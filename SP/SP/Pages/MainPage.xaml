@@ -11,6 +11,7 @@
             <Label Style="{StaticResource h1}" Text="Howest wenst alle eerstejaars een fantastische start aan onze hogeschool. Zit jij in het tweede of derde jaar? Uiteraard kijken we er heel erg naar uit om jou terug te zien." Padding="30,10,30,10"/>
             <Button Text="Alle info voor een succesvolle start" x:Name="btnStart" Command="{Binding GoToOverviewCommand}"></Button>
             <Button x:Name="btnSettings" Style="{StaticResource secondaryButton}" Text="Ga naar de settings" Command="{Binding GoToSettingsCommand}"></Button>
+            <Button Text="Logout"  HorizontalOptions="Center" Command="{Binding LogoutCommand}" Style="{StaticResource secondaryButton}"> </Button>
         </StackLayout>
     </ScrollView>
 

@@ -43,7 +43,7 @@ namespace SP.Api.Controllers
             }
             newUser = await _userManager.FindByEmailAsync(registration.Email);
             await _userManager.AddClaimAsync(newUser, new Claim("registration-date", DateTime.UtcNow.ToString("yy-MM-dd")));
-            await _userManager.AddClaimAsync(newUser, new Claim("city", registration.City));
+            await _userManager.AddClaimAsync(newUser, new Claim("name", newUser.UserName));
 
             return Ok();
         }

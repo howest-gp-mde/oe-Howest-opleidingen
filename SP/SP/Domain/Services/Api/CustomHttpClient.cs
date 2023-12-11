@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System.Net.Http;
 using System.Net.Http.Formatting;
+using System.Net.Http.Headers;
 using System.Threading.Tasks;
 
 namespace SP.Domain.Services.Api
@@ -31,8 +32,10 @@ namespace SP.Domain.Services.Api
             return httpClientHandler;
         }
 
-        public async Task<T> GetApiResult<T>(string uri)
+        public async Task<T> GetApiResult<T>(string uri, string token = null)
         {
+            SetHeaders(token);
+
             string response = await GetStringAsync(uri);
             return JsonConvert.DeserializeObject<T>(response, GetJsonFormatter().SerializerSettings);
         }
@@ -72,6 +75,18 @@ namespace SP.Domain.Services.Api
             result = await response.Content.ReadAsAsync<TOut>();
 
             return result;
+        }
+
+        private void SetHeaders(string token)
+        {
+            if (!string.IsNullOrEmpty(token))
+            {
+                this.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+            }
+            else
+            {
+                this.DefaultRequestHeaders.Authorization = null;
+            }
         }
     }
 }

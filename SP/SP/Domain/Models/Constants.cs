@@ -9,6 +9,7 @@ namespace SP.Domain.Models
     {
         public const string NumberOfPetsError = "Je moet hondern hebben";
         public const string SettingsFile = "settings.txt";
-        public const string ApiBaseUrl = "https://enter-your-api-tunnel-url/";
+        //public const string ApiBaseUrl = "https://enter-your-api-tunnel-url/";
+        public const string ApiBaseUrl = "https://192.168.0.6:5001/";
     }
 }

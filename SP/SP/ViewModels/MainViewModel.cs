@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows.Input;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace SP.ViewModels
@@ -30,6 +31,17 @@ namespace SP.ViewModels
                 {
                     // await App.Current.MainPage.Navigation.PushAsync(new SettingsPage());
                     await CoreMethods.PushPageModel<SettingsViewModel>(true);
+                });
+            }
+        }
+
+        public ICommand LogoutCommand
+        {
+            get
+            {
+                return new Command(() =>
+                {
+                    SecureStorage.Remove("token");
                 });
             }
         }

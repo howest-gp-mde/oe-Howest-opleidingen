@@ -28,6 +28,11 @@ namespace SP.Api.Controllers
         {
             var user = GetUser();
 
+            if(user == null)
+            {
+                return BadRequest();
+            }
+
             return Ok(new ProfileResponseDTO
             {
                 Email = user.Email,

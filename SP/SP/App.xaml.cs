@@ -1,4 +1,5 @@
 ﻿using FreshMvvm;
+using SP.Domain.Services;
 using SP.Domain.Services.Api;
 using SP.Domain.Services.File;
 using SP.Services;
@@ -23,6 +24,8 @@ namespace SP
 
             // dependencies
             FreshIOC.Container.Register<IStudyProgrammeService, StudyProgrammeApiService>();
+            FreshIOC.Container.Register<IIdentityService, IdentityApiService>();
+            FreshIOC.Container.Register<ISettingsService, SettingsApiService>();
             FreshIOC.Container.Register<IApiClient, CustomHttpClient>().AsSingleton();
 
             // change to FreshMVVM
